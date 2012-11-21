@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  * It is the ListOfValueDao JDBC implementation. 
  * 
  * Creation date: Nov. 14, 2012
- * Last modify date: Nov. 14, 2012
+ * Last modify date: Nov. 20, 2012
  * 
  * @author  Yan Linda Guo
  * @version 1.0
