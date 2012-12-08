@@ -1,0 +1,7 @@
+*.class
+*.jar
+*.db
+*.dll
+*.classpath
+*.settings/*
+
