@@ -12,5 +12,8 @@
 <body>
 	<h1>Logixpath Mini Application</h1>
 	Welcome you to visit LPMINI!
+	<P>
+	<a href="lpac/request/catarea/listallsp">List all request category areas</a><br>
+	</P>
 </body>
 </html>

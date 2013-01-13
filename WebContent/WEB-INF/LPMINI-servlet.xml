@@ -8,6 +8,13 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<!-- Scan for annotation based controllers -->
-	<context:component-scan base-package="org.lpmini.domain" />
+	<context:component-scan base-package="org.lpmini.web,org.lpmini.service,org.lpmini.domain" />
 
+	<!-- JSTL JSP based ViewResolver -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
 </beans>

@@ -5,7 +5,6 @@ public class ListOfValue {
 	String	localeString;
 	String	key;
 	String	stringValue;
-	int		intValue;
 	double	decimalValue;
 	int		displayOrder;
 	String	notes;
@@ -19,11 +18,10 @@ public class ListOfValue {
 		this.stringValue = stringValue;
 	}
 	
-	public ListOfValue(String LOVType, String localeString, String key, int intValue) {
+	public ListOfValue(String LOVType, String localeString, String key) {
 		this.LOVType = LOVType;
 		this.localeString = localeString;
 		this.key = key;
-		this.intValue = intValue;
 	}
 	
 	public ListOfValue(String LOVType, String localeString, String key, double decimalValue) {
@@ -56,12 +54,6 @@ public class ListOfValue {
 	}
 	public void setStringValue(String stringValue) {
 		this.stringValue = stringValue;
-	}
-	public int getIntValue() {
-		return intValue;
-	}
-	public void setIntValue(int intValue) {
-		this.intValue = intValue;
 	}
 	public double getDecimalValue() {
 		return decimalValue;

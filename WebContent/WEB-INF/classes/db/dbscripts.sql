@@ -29,6 +29,21 @@ INSERT INTO ListOfValue(LOVType, LocaleString, Key, DecimalValue)
 INSERT INTO ListOfValue(LOVType, LocaleString, Key, DecimalValue)
 	VALUES('TestLOVType2', 'en_us', '3', 3);
 
+-- Create Table: Account
+CREATE TABLE Account (
+	Id 					serial NOT NULL PRIMARY KEY UNIQUE,
+	UniqueId 			uuid NOT NULL UNIQUE,
+	Name				varchar(255) NOT NULL
+);	
+	
+-- Create Table: Contact
+CREATE TABLE Contact (
+	UniqueId 			uuid NOT NULL PRIMARY KEY,
+	FirstName			varchar(80) NOT NULL,
+	LastName			varchar(80) NOT NULL,
+	Email				varchar(255) NOT NULL
+);
+	
 -- Create Table: RequestCategoryArea
 CREATE TABLE RequestCategoryArea (
 	Id 							serial NOT NULL PRIMARY KEY UNIQUE,
@@ -108,8 +123,8 @@ INSERT INTO Request(RequestNumber, Status, Type, CategoryAreaId, OperatingSystem
 ------------------------------------------------------------------------------
 -- DROP TABLEs
 ------------------------------------------------------------------------------
-DROP TABLE IF EXISTS Request;
-DROP TABLE IF EXISTS RequestCategoryArea;
-DROP TABLE IF EXISTS ListOfValue;
+--DROP TABLE IF EXISTS Request;
+--DROP TABLE IF EXISTS RequestCategoryArea;
+--DROP TABLE IF EXISTS ListOfValue;
 
 					

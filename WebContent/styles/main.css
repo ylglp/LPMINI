@@ -1,0 +1,589 @@
+@CHARSET "ISO-8859-1";
+
+/**
+ * This is the main css file which contains general style elements
+ * 
+ * Creation date: Sep. 11, 2011
+ * Last modify date: Feb. 16, 2012
+ * 
+ * @author  Yan Linda Guo
+ * @version 1.0
+ */
+
+p {
+	font-size: 11pt;
+	font-family:helvetica,arial;
+	color:#000000;
+	line-height:130%;
+}
+
+.lpfont_text {
+	font-size: 11pt;
+	font-family:helvetica,arial;
+	color:#000000;
+	line-height:130%;
+}
+
+.lpfont_texts {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#000000;
+}
+
+.lpfont_textl {
+	font-size: 12pt;
+	font-family:helvetica,arial;
+	color:#000000;
+}
+
+.lpfont_texts_red {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#FF0000;
+	line-height:130%;
+}
+
+.lpfont_texti {
+	font-size: 11pt;
+	font-family:helvetica,arial;
+	color:#000000;
+	font-style:oblique;
+}
+
+.lpfont_title {
+	font-size: 16pt;
+	font-family:helvetica,arial;
+	color:#001100;
+	font-weight:bold;
+}
+
+.lpfont_titlegreen {
+	font-size: 16pt;
+	font-family:helvetica,arial;
+	color:#005500;
+	font-weight:bold;
+}
+
+.lpfont_header1 {
+	font-size: 14pt;
+	font-family:helvetica,arial;
+	color:#003300;
+	font-weight:bold;
+	line-height:100%;
+}
+
+.lpfont_header2 {
+	font-size: 12pt;
+	font-family:helvetica,arial;
+	color:#005500;
+	font-weight:bold;
+	line-height:100%;
+}
+
+.lpfont_header3 {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#007700;
+	font-style:oblique;
+	line-height:100%;
+}
+
+.lpfont_asteriskred {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#ff0000;
+}
+
+.lpfont_noteblue {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#006699;
+}
+
+.lpfont_notegrey {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#606060;
+}
+
+.lpfont_tdnote  {
+	font-size:11px;
+    font-family: helvetica,arial;
+	color:#222222;
+}
+
+.lpfont_error {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#ff0000;
+}
+
+.lp_button_s {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	width: 60px;
+    background: #ddd;
+    border: 1px solid black;
+}
+.lp_button_s:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+
+.lp_button {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	width: 80px;
+    background: #ddd;
+    border: 1px solid black;
+}
+.lp_button:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+
+.lp_button2 {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	width: 120px;
+    background: #ddd;
+    border: 1px solid black;
+}
+.lp_button2:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+
+.lp_button3 {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	width: 160px;
+    background: #ddd;
+    border: 1px solid black;
+}
+.lp_button3:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+
+.lp_button4 {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	width: 200px;
+    background: #ddd;
+    border: 1px solid black;
+}
+.lp_button4:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+
+.lp_button5 {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	width: 240px;
+    background: #ddd;
+    border: 1px solid black;
+}
+.lp_button5:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+
+a:link, a:visited {
+	color: #0055cc;
+	text-decoration: none;
+	background: transparent;
+}
+
+a:hover {		
+	color: white;		
+	background-color: #65a242;		
+	text-decoration: none;
+}
+
+a.hl:link, a.hl:visited {
+	color: #002222;
+	text-decoration: none;
+	background: transparent;
+}
+
+a.hl:hover {		
+	color: white;		
+	background-color: #65a242;		
+	text-decoration: none;
+}
+
+a.icon:hover {		
+	color: white;		
+	background-color: transparent;		
+	text-decoration: none;
+}
+
+div#pagebasic {
+	width: 800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+div#page {
+	width: 960px;
+	margin-left:10px;
+	margin-right:auto;
+}
+
+div#pagepopwin {
+	width: 500px;
+}
+
+div#header { 
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px 0px;
+}
+
+div#body {
+	width: 800px;
+	margin-top: 10px;
+	/*
+	margin-left:auto;
+	margin-right:auto;
+	*/
+	padding-left:10px;
+	padding-right:10px;
+}
+
+div#footerbasic {
+	width: 780px;
+	padding: 25px 0;
+	margin-top: 2em;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: white;
+	border-top: 1px solid #c3bbb6;
+	text-align: center;	
+}
+
+div#footer {
+	width: 780px;
+	padding: 25px 0;
+	margin-top: 2em;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: white;
+	border-top: 1px solid #c3bbb6;
+	text-align: center;	
+}
+
+div#footerpopwin {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 1em;
+	width: 450px;
+	padding: 1px 0;
+	background-color: white;
+	border-top: 1px solid #c3bbb6;
+	text-align: center;	
+}
+
+div#navside {
+	margin-top: 10px;
+	margin-left:auto;
+	margin-right:auto;
+	top: 10px;
+	width: 160px;
+	height: 500px;
+	background: #eef0f0;
+	line-height:130%;
+}
+
+
+
+div#header .headeritem {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+}
+
+div#navtop td {
+	font-size: 11pt;
+	font-weight:bold;
+	font-family:helvetica,arial;
+	height: 26px;
+	vertical-align: middle;	
+}
+
+div#navtop {
+	margin-left:auto;
+	margin-right:auto;
+	top: -1.3em;
+	width: 980px;
+	height: 33px;
+	background: #b0eeee;
+}
+
+div#navside .item1 {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	margin-left: 10px;
+	line-height:150%;
+}
+
+div#navside .item2 {
+	font-size: 9pt;
+	font-family:helvetica,arial;
+	margin-left: 15px;
+	line-height:150%;
+}
+
+div#footerbasic .item {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+}
+
+div#footer .item {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+}
+
+div#footerpopwin .item {
+	font-size: 10pt;
+	font-family:helvetica,arial;
+}
+
+div#res {
+	font-size: 10pt;
+	width: 200px;
+	height: 300px;
+	line-height:150%;
+	font-weight:bold;
+	background-image:url('../images/kb/resources.gif');
+}
+div#tool {
+	font-size: 10pt;
+	width: 200px;
+	height: 300px;
+	line-height:150%;
+	font-weight:bold;
+	background-image:url('../images/kb/tools.gif');
+}
+div#sim {
+	font-size: 10pt;
+	width: 200px;
+	height: 300px;
+	line-height:150%;
+	font-weight:bold;
+	background-image:url('../images/kb/simulations.gif');
+}
+
+.header-dark-green {
+	background-color: #ffffff;		
+}
+
+div#branding {
+	float: none;
+	width: 100%;
+	margin: 10px 0 0 0;
+	padding: 0 0 0 0;
+}
+
+div#welcome {
+	padding: 10px 10px;
+}
+
+div#welcome div.left {
+	float: left;
+}
+
+div#welcome div.right {
+	float: right;
+}
+
+div#content {
+	width: 100%;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+div#content .section {
+	width: 505px;
+	float: left;
+}
+
+div#content input[type="submit"],
+div#content input[type="button"] {
+	font-weight: bold;
+	color: #fff;
+	height: 20px;
+	background: #fff url(../images/btn.bg.gif) 0 0 repeat-x;
+	border-style: none;
+	vertical-align: middle;
+}
+
+div#sub {
+	margin-top: 20px;
+}
+
+div#nav ul {
+	margin-left: 1em;
+	border-left: 1px solid #4f5d2c;
+}
+
+div#nav ul li {
+	border-top: 1px solid #4f5d2c;
+	border-right: 1px solid #4f5d2c;
+	background: #9cac7c;
+}
+
+.errors {
+	font-weight: bold;
+	text-align: center;
+	color: #600;
+}
+
+.errors ul {
+	list-style: none;
+}
+
+#content .field {
+	float:left;
+}
+
+#content .field .label {
+	float: left;
+	padding-top: 5px;
+	padding-right: 5px;
+	font-weight: bold;
+	width: 150px;
+	text-align: right;
+}
+
+#content .field .output {
+	float: left;
+	width: 250px;
+	padding-top: 5px;
+	text-align: left;
+}
+
+#content .field .input {
+	float: left;
+	width: 250px;
+	text-align: left;
+}
+
+#content .searchGroup {
+	width: 35%;
+	text-align: right;
+}
+
+div#content .buttonGroup {
+	width: 90%;
+	float: left;
+	text-align: center;
+}
+
+div#content .buttonGroup input[type="submit"],
+div#content .buttonGroup input[type="button"] {
+	margin-right: 5px;
+}
+
+div#content .prev {
+	float: right;
+}
+
+div#content .next {
+	float: right;	
+}
+
+div#content .next a {
+	margin-left: 20px;
+}
+
+div#content .summary {
+	width: 100%;
+	border: 1px solid #414f23;
+	border-collapse: collapse;
+}
+
+div#content .summary thead th {
+	border-left: 1px solid #414f23;
+	background: #fff url(../images/th.bg.gif) 0 100% repeat-x;
+	border-bottom: 1px solid #414f23;
+	padding: 6px;
+	text-align: left;
+	font-size: small;
+}
+
+div#content .summary tbody td {
+	border-left: 1px solid #9cac7c;
+	padding: 4px;
+	border-bottom: 1px solid #9cac7c;
+	font-size: 8pt;
+}
+
+div#sub {
+	width: 215px;
+}
+
+.detailMark {
+	position:relative;
+	height:26px; /*dimensions of our image*/
+	width:26px;
+	white-space:nowrap;
+	background:url(<c:url value="/images/icon/qmark_s.jpg"/>) top left no-repeat;
+}
+.inlineToolTip {
+	position:absolute;
+	left:0px; /*Moves it to the right beside the question mark*/
+	top:25px;
+	display:none;
+	width:350px;
+	padding:5px;
+	text-align:left;
+	border:1px solid #ffffff;
+	background-color:#dddddd;	
+	font-size: 10pt;
+	font-family:helvetica,arial;
+}
+.inlineImg {
+	position:absolute;
+	left:0px; /*Moves it to the right beside the question mark*/
+	top:10px;
+	display:none;
+	width:700px;
+	padding:5px;
+	text-align:left;
+	border:1px solid #ffffff;
+	background-color:#dddddd;	
+	font-size: 10pt;
+	font-family:helvetica,arial;
+}
+.detailMark1 {
+	position:relative;
+	height:auto; /*dimensions of our image*/
+	background:url(../images/icon/qmark_s.jpg) top left no-repeat;
+}
+
+.infoInlineToolTip {
+	position:absolute;
+	left:68px; /*Moves it to the right beside the value*/
+	top:-8px;
+	display:none;
+	width:350px;
+	padding:5px;
+	text-align:left;
+	border:1px solid #ffffff;
+	background-color:#dddddd;
+	opacity:1;
+  	filter:alpha(opacity=90); /* For IE8 and earlier */
+	font-size: 10pt;
+	font-family:helvetica,arial;
+	color:#003366;
+}
+.infoMark1 {
+	position:relative;
+	height:auto; /*dimensions of our image*/
+	background:url(../images/icon/info_s.png) top left no-repeat;
+}
+

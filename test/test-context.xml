@@ -27,8 +27,11 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<bean id="RequestDao" class="org.lpmini.repository.JdbcRequestDao">
+	<bean id="requestDao" class="org.lpmini.repository.JdbcRequestDao">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
+	<bean id="requestManager" class="org.lpmini.service.RequestManagerImpl" >
+		<property name="requestDao" ref="requestDao" />
+	</bean>
 </beans>

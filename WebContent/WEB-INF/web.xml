@@ -19,7 +19,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>LPMINI</servlet-name>
-    <url-pattern>/lpmini/*</url-pattern>
+    <url-pattern>/lpac/*</url-pattern>
   </servlet-mapping>
 
 	<filter>     

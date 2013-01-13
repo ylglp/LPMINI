@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  * It is the ListOfValueDao JDBC implementation. 
  * 
  * Creation date: Nov. 14, 2012
- * Last modify date: Nov. 20, 2012
+ * Last modify date: Dec. 12, 2012
  * 
  * @author  Yan Linda Guo
  * @version 1.0
@@ -35,10 +35,10 @@ public class JdbcListOfValueDao implements ListOfValueDao {
 	
 	// o: the main object: this ListOfValue; 
 	protected final static String fieldSelectionForRead =
-			"o.LOVType,o.LocaleString,o.Key,o.StringValue,o.IntValue,o.DecimalValue,o.DisplayOrder,o.Notes";
+			"o.LOVType,o.LocaleString,o.Key,o.StringValue,o.DecimalValue,o.DisplayOrder,o.Notes";
 
 	protected final static String fieldSetForUpdate = 
-			"StringValue=:StringValue,IntValue=:IntValue,DecimalValue=:DecimalValue,DisplayOrder=:DisplayOrder,Notes=:Notes";
+			"StringValue=:StringValue,DecimalValue=:DecimalValue,DisplayOrder=:DisplayOrder,Notes=:Notes";
 	
 	private static class ListOfValueMapper implements RowMapper<ListOfValue> {
 		
@@ -50,7 +50,6 @@ public class JdbcListOfValueDao implements ListOfValueDao {
 			lov.setLocaleString(rs.getString("LocaleString"));
 			lov.setKey(rs.getString("Key"));
 			lov.setStringValue(rs.getString("StringValue"));
-			lov.setIntValue(rs.getInt("IntValue"));
 			lov.setDecimalValue(rs.getDouble("DecimalValue"));
 			lov.setDisplayOrder(rs.getInt("DisplayOrder"));
 			lov.setNotes(rs.getString("Notes"));
