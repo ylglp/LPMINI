@@ -125,6 +125,7 @@ INSERT INTO Request(RequestNumber, Status, Type, CategoryAreaId, OperatingSystem
 ------------------------------------------------------------------------------
 --DROP TABLE IF EXISTS Request;
 --DROP TABLE IF EXISTS RequestCategoryArea;
+--DROP TABLE IF EXISTS Department;
 --DROP TABLE IF EXISTS ListOfValue;
 
 					
