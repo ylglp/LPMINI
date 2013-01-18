@@ -15,5 +15,8 @@
 	<P>
 	<a href="lpac/request/catarea/listallsp">List all request category areas</a><br>
 	</P>
+	<P>
+	<a href="lpac/request/department/listall">List all departments</a><br>
+	</P>
 </body>
 </html>

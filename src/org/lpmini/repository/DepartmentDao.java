@@ -34,7 +34,7 @@ public interface DepartmentDao {
 	public List<Department> findDepartmentsByParent(int parentDeptId);
 	
 	// Add a Department. Return the generated id
-	public long addDepartment(Department dept) 
+	public int addDepartment(Department dept) 
 			throws DuplicateKeyException, Exception;
 	
 	// Save a the changes of an existing Department object. Return the # of record updated

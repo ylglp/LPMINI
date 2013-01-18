@@ -19,27 +19,30 @@ public class Department implements Serializable {
 	private int 		id; 	// database generated id
 	private String 		name;
 	private String 		description;
+	private int			deptHead;
 	private int			parentDeptId;
 	private int 		ownerAccountId;
 	private DateTime 	createdDateTime;	// NOTE: we will learn the Joda datetime manipulation in the future
 	
-	/*
-	Id                      serial NOT NULL PRIMARY KEY UNIQUE,
-	Name                    varchar(255) NOT NULL,
-	Description             varchar(512),
-	DeptHead                uuid REFERENCES Contact (UniqueId),
-	ParentDeptId            int REFERENCES Department (Id),
-	OwnerAccountId          int REFERENCES Account (Id),
-	*/
+	/**********************************************************
+	 * Table definition
+	 * Id                   serial NOT NULL PRIMARY KEY UNIQUE,
+	 * Name                 varchar(255) NOT NULL,
+	 * Description          varchar(512),
+	 * DeptHead             int REFERENCES Employee (Id),
+	 * ParentDeptId         int REFERENCES Department (Id),
+	 * OwnerAccountId       int REFERENCES Account (Id),
+	 */
 	
 	// Constructor
 	public Department() {
 	}
 	
 	// Constructor
-	public Department(String name, String description, int parentDeptId, int ownerAccountId) {
+	public Department(String name, String description, int deptHead, int parentDeptId, int ownerAccountId) {
 		this.name = name;
-		this.setDescription(description);
+		this.description = description;
+		this.deptHead = deptHead;
 		this.parentDeptId = parentDeptId;
 		this.ownerAccountId = ownerAccountId;
 	}	
@@ -47,8 +50,8 @@ public class Department implements Serializable {
 	public int getId() {
 		return id;
 	}
-	public int setId(int id) {
-		return this.id = id;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -61,6 +64,12 @@ public class Department implements Serializable {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getDeptHead() {
+		return deptHead;
+	}
+	public void setDeptHead(int deptHead) {
+		this.deptHead = deptHead;
 	}
 	public int getParentDeptId() {
 		return parentDeptId;

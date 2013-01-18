@@ -31,15 +31,15 @@ public class JdbcDepartmentDao implements DepartmentDao {
 	private SimpleJdbcInsert insertDepartment;
 	public void setDataSource(DataSource dataSource) {
 		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-		insertDepartment = new SimpleJdbcInsert(dataSource).withTableName("RequestCategoryArea").usingGeneratedKeyColumns("id");
+		insertDepartment = new SimpleJdbcInsert(dataSource).withTableName("Department").usingGeneratedKeyColumns("id");
 	}
 	
-	// o: the main object: this RequestCategoryArea; 
-	protected final static String fieldSelectionForReadRequestCategoryArea =
-			"o.Id,o.CategoryName,o.FunctionalAreaName,o.Description,o.OwnerAccountId";
+	// o: the main object: this Department; 
+	protected final static String fieldSelectionForReadDepartment =
+			"o.Id,o.Name,o.Description,o.DeptHead,o.ParentDeptId,o.OwnerAccountId";
 
-	protected final static String fieldSetForUpdateRequestCategoryArea = 
-			"CategoryName=:CategoryName,FunctionalAreaName=:FunctionalAreaName,Description=:Description";
+	protected final static String fieldSetForUpdateDepartment = 
+			"Name=:Name,Description=:Description,DeptHead=:DeptHead,ParentDeptId=:ParentDeptId,OwnerAccountId=:OwnerAccountId";
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	// Department related methods
@@ -54,6 +54,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
 			dept.setId(rs.getInt("Id"));
 			dept.setName(rs.getString("Name"));
 			dept.setDescription(rs.getString("Description"));
+			dept.setDeptHead(rs.getInt("DeptHead"));
 			dept.setParentDeptId(rs.getInt("ParentDeptId"));
 			dept.setOwnerAccountId(rs.getInt("OwnerAccountId"));
 			
@@ -65,140 +66,129 @@ public class JdbcDepartmentDao implements DepartmentDao {
 	@Override
 	public List<Department> findAllSiteDepartments(int ownerAccountId) {
 
-		/*
 		try {
-			String strQuery = "select " + fieldSelectionForReadRequestCategoryArea + 
-					" from RequestCategoryArea as o where OwnerAccountId=:OwnerAccountId " + 
-					" order by o.CategoryName, o.FunctionalAreaName";
-			List<RequestCategoryArea> depts = namedParameterJdbcTemplate.query(
+			String strQuery = "select " + fieldSelectionForReadDepartment + 
+					" from Department as o where OwnerAccountId=:OwnerAccountId " + 
+					" order by o.Id";
+			List<Department> depts = namedParameterJdbcTemplate.query(
 					strQuery,
 					new MapSqlParameterSource().addValue("OwnerAccountId", ownerAccountId),
-					new RequestCategoryAreaMapper());
+					new DepartmentMapper());
 			return depts;
 		}
 		catch (Exception e) {
-			System.out.println("JdbcRequestDao.findAllSiteRequestCategoryAreas Exception: " + e.getMessage());
+			System.out.println("JdbcDepartmentDao.findAllSiteDepartments Exception: " + e.getMessage());
 			return null;
 		}
-		*/
-		return null;
 	}
 
 	// get a specific Department by a given id
 	@Override
 	public Department findDepartmentById(int id) {
-		/*
 		try {
 			StringBuffer sbQuery = new StringBuffer();
 			sbQuery.append("select ");
-			sbQuery.append(fieldSelectionForReadRequestCategoryArea);
-			sbQuery.append(" from RequestCategoryArea as o");
+			sbQuery.append(fieldSelectionForReadDepartment);
+			sbQuery.append(" from Department as o");
 			sbQuery.append(" WHERE o.Id = :Id;");
 
-			RequestCategoryArea area = namedParameterJdbcTemplate.queryForObject(
+			Department dept = namedParameterJdbcTemplate.queryForObject(
 					sbQuery.toString(),
 					new MapSqlParameterSource().addValue("Id", id),
-					new RequestCategoryAreaMapper()); 
+					new DepartmentMapper());
 			
-			return area;
+			return dept;
 		} 
 		catch (Exception e) {
-			System.out.println("JdbcRequestDao.findRequestCategoryAreaById Exception: " + e.getMessage());
+			System.out.println("JdbcDepartmentDao.findDepartmentById Exception: " + e.getMessage());
 			return null;
 		}
-		*/
-		return null;
 	}
 
 	// get a specific Department by a given name
 	@Override
 	public Department findDepartmentByName(int ownerAccountId, String name) {
-		/*
 		try {
 			StringBuffer sbQuery = new StringBuffer();
 			sbQuery.append("select ");
-			sbQuery.append(fieldSelectionForReadRequestCategoryArea);
-			sbQuery.append(" from RequestCategoryArea as o");
-			sbQuery.append(" WHERE o.Id = :Id;");
+			sbQuery.append(fieldSelectionForReadDepartment);
+			sbQuery.append(" from Department as o");
+			sbQuery.append(" WHERE o.OwnerAccountId = :OwnerAccountId and o.Name = :Name;");
 
-			RequestCategoryArea area = namedParameterJdbcTemplate.queryForObject(
+			Department dept = namedParameterJdbcTemplate.queryForObject(
 					sbQuery.toString(),
-					new MapSqlParameterSource().addValue("Id", id),
-					new RequestCategoryAreaMapper()); 
+					new MapSqlParameterSource().addValue("OwnerAccountId", ownerAccountId).addValue("Name", name),
+					new DepartmentMapper());
 			
-			return area;
+			return dept;
 		} 
 		catch (Exception e) {
-			System.out.println("JdbcRequestDao.findRequestCategoryAreaById Exception: " + e.getMessage());
+			System.out.println("JdbcDepartmentDao.findDepartmentById Exception: " + e.getMessage());
 			return null;
 		}
-		*/
-		return null;
 	}
 	
 	// get all Departments owned by a parent Department
 	@Override
 	public List<Department> findDepartmentsByParent(int parentDeptId) {
 
-		/*
 		try {
-			String strQuery = "select " + fieldSelectionForReadRequestCategoryArea + 
-					" from RequestCategoryArea as o where OwnerAccountId=:OwnerAccountId " + 
-					" order by o.CategoryName, o.FunctionalAreaName";
-			List<RequestCategoryArea> depts = namedParameterJdbcTemplate.query(
+			String strQuery = "select " + fieldSelectionForReadDepartment + 
+					" from Department as o where o.ParentDeptId = :ParentDeptId " + 
+					" order by o.Name";
+			List<Department> depts = namedParameterJdbcTemplate.query(
 					strQuery,
-					new MapSqlParameterSource().addValue("OwnerAccountId", ownerAccountId),
-					new RequestCategoryAreaMapper());
+					new MapSqlParameterSource().addValue("ParentDeptId", parentDeptId),
+					new DepartmentMapper());
 			return depts;
 		}
 		catch (Exception e) {
-			System.out.println("JdbcRequestDao.findAllSiteRequestCategoryAreas Exception: " + e.getMessage());
+			System.out.println("JdbcDepartmentDao.findDepartmentsByParent Exception: " + e.getMessage());
 			return null;
 		}
-		*/
-		return null;
 	}
 
 	/**
-	 * Set SQL Parameters used for creating PurchaseOrder header and updating PurchaseOrder
-	 * @param purchaseOrder
+	 * Set SQL Parameters used for creating Department
+	 * @param dept
 	 * @param bNew
 	 * @return
 	 */
-	private MapSqlParameterSource getRequestCategoryAreaMapSqlParameterSource(Department dept, boolean bNew) {
+	private MapSqlParameterSource getDepartmentMapSqlParameterSource(Department dept, boolean bNew) {
 
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
 
 		if (!bNew)
-			parameters.addValue("Id", dept.getId());	// auto generated when insert a RequestCategoryArea, use it as the primary key when update it
+			parameters.addValue("Id", dept.getId());	// auto generated when insert a Department, use it as the primary key when update it
 		parameters.addValue("Name", dept.getName());
 		parameters.addValue("Description", dept.getDescription());
+		parameters.addValue("DeptHead", dept.getDeptHead());
 		parameters.addValue("ParentDeptId", dept.getParentDeptId());
-		parameters.addValue("OwnerAccountId", dept.getOwnerAccountId());	// auto generated when insert a RequestCategoryArea, use it as the primary key when update it
+		parameters.addValue("OwnerAccountId", dept.getOwnerAccountId());
 		return parameters;
 	}
 	
 	// Add a Department. Return the generated id
 	@Override
-	public long addDepartment(Department dept) 
+	public int addDepartment(Department dept) 
 			throws DuplicateKeyException, Exception {
 		
 		if (dept == null)
 			throw new Exception("Missing input dept");
 		
-		MapSqlParameterSource parameters = this.getRequestCategoryAreaMapSqlParameterSource(dept, true);	
+		MapSqlParameterSource parameters = this.getDepartmentMapSqlParameterSource(dept, true);	
 		try {
-			// insert RequestCategoryArea record
+			// insert Department record
 			int retId = insertDepartment.executeAndReturnKey(parameters).intValue();
 			dept.setId(retId);
 			return retId;
 		}
 		catch (DuplicateKeyException e1) {
-			System.out.println("JdbcRequestDao.addDepartment Exception: " + e1.getMessage());
+			System.out.println("JdbcDepartmentDao.addDepartment Exception: " + e1.getMessage());
 			throw e1;
 		}
 		catch (Exception e2) {
-			System.out.println("JdbcRequestDao.addDepartment Exception: " + e2.getMessage());
+			System.out.println("JdbcDepartmentDao.addDepartment Exception: " + e2.getMessage());
 			throw e2;
 		}
 	}
@@ -211,16 +201,16 @@ public class JdbcDepartmentDao implements DepartmentDao {
 			throw new Exception("Missing input dept");
 		try {
 			int numRecUpdated = namedParameterJdbcTemplate.update(
-					"update RequestCategoryArea set " + fieldSetForUpdateRequestCategoryArea + " where Id=:Id;",
-					getRequestCategoryAreaMapSqlParameterSource(dept, false));
+					"update Department set " + fieldSetForUpdateDepartment + " where Id=:Id;",
+					getDepartmentMapSqlParameterSource(dept, false));
 			return numRecUpdated;
 		}
 		catch (DuplicateKeyException e1) {
-			System.out.println("JdbcRequestDao.saveDepartment Exception: " + e1.getMessage());
+			System.out.println("JdbcDepartmentDao.saveDepartment Exception: " + e1.getMessage());
 			throw e1;
 		}
 		catch (Exception e2) {
-			System.out.println("JdbcRequestDao.saveDepartment Exception: " + e2.getMessage());
+			System.out.println("JdbcDepartmentDao.saveDepartment Exception: " + e2.getMessage());
 			throw e2;
 		}
 	}
@@ -229,11 +219,11 @@ public class JdbcDepartmentDao implements DepartmentDao {
 	@Override
 	public int deleteDepartment(int ownerAccountId, int id)	
 			throws Exception {
-		if (id <= 0 || ownerAccountId < 0)
+		if (ownerAccountId < 0 || id <= 0)
 			return 0;
 		try {
 			int numRecDeleted = namedParameterJdbcTemplate.update(
-					"delete from RequestCategoryArea where Id=:Id and OwnerAccountId=:OwnerAccountId", 
+					"delete from Department where Id=:Id and OwnerAccountId=:OwnerAccountId", 
 					new MapSqlParameterSource().addValue("Id", id).addValue("OwnerAccountId", ownerAccountId));
 			return numRecDeleted;
 		}
