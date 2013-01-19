@@ -53,7 +53,7 @@
 	</form>
 	
 	<BR>
-	<a href="<c:url value="/lpac/request/department/addform"/>">Add Department</a><BR>
+	<a href="<c:url value="/lpac/department/addform"/>">Add Department</a><BR>
 	
 	<BR><BR>
 	<a href="<c:url value="/index.jsp"/>">LPMINI Home</a><BR>

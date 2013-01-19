@@ -2,25 +2,25 @@ package org.lpmini.repository;
 
 import java.util.List;
 
-import org.lpmini.domain.RequestCategoryArea;
+import org.lpmini.domain.Department;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
 
 /**
  * It is the Department JDBC implementation testing class. 
  * 
- * Creation date: Dec. 7, 2012
- * Last modify date: Dec. 7, 2012
+ * Creation date: Jan. 18, 2013
+ * Last modify date: Jan. 18, 2013
  * 
- * @author  Yan Linda Guo
+ * @author  J Stephen Yu
  * @version 1.0
  */
 
 @SuppressWarnings("deprecation")
 public class JdbcDepartmentDaoTests  extends AbstractTransactionalDataSourceSpringContextTests  {
 
-	private RequestDao requestDao;
-	public void setRequestDao(RequestDao requestDao) {
-		this.requestDao = requestDao;
+	private DepartmentDao departmentDao;
+	public void setRequestDao(DepartmentDao departmentDao) {
+		this.departmentDao = departmentDao;
 	}
 	
 	@Override
@@ -32,53 +32,53 @@ public class JdbcDepartmentDaoTests  extends AbstractTransactionalDataSourceSpri
 	protected void onSetUpInTransaction() throws Exception {
 	}
 
-	public void testFindRequestCategoryAreas() {
-		// Test find all RequestCategoryAreas
-		List<RequestCategoryArea> allAreas = requestDao.findAllSiteRequestCategoryAreas(1);
-		assertNotNull(allAreas);
-		assertTrue(allAreas.size() >= 3);
+	public void testFindDepartments() {
+		// Test find all Departments
+		List<Department> allDepts = departmentDao.findAllSiteDepartments(1);
+		assertNotNull(allDepts);
+		assertTrue(allDepts.size() >= 9);
 		
-		// Test find one specific RequestCategoryArea
-		RequestCategoryArea area = requestDao.findRequestCategoryAreaById(1);
-		assertNotNull(area);
-		assertEquals(area.getId(), 1);
+		// Test find one specific Department
+		Department dept = departmentDao.findDepartmentById(1);
+		assertNotNull(dept);
+		assertEquals(dept.getId(), 1);
 	}
 	
-	public void testAddUpdateRequestCategoryArea() {
-		// Create RequestCategoryArea
-		RequestCategoryArea area = new RequestCategoryArea(1, "Network", "Internet Access", "Internet access from internal network");
-		RequestCategoryArea retArea = null;
+	public void testAddUpdateDepartment() {
+		// Create Department
+		Department dept = new Department("LPMINI", "Develop LPMINI App", 1, 1, 1);
+		Department retDept = null;
 		try {
-			int retId = requestDao.addRequestCategoryArea(area);
+			int retId = departmentDao.addDepartment(dept);
 			assertTrue(retId > 0);
-			retArea = requestDao.findRequestCategoryAreaById(retId);
-			assertNotNull(retArea);
-			assertEquals(retArea.getCategoryName(), "Network");
-			assertEquals(retArea.getFunctionalAreaName(), "Internet Access");
+			retDept = departmentDao.findDepartmentById(retId);
+			assertNotNull(retDept);
+			assertEquals(retDept.getName(), "LPMINI");
+			assertEquals(retDept.getDescription(), "Develop LPMINI App");
 		}
 		catch (Exception e) {
 			fail(e.getMessage());
 		}
 		
 		// Update RequestCategoryArea
-		retArea.setCategoryName("Network Ext");
-		retArea.setFunctionalAreaName("External Internet Access");
-		retArea.setDescription("Acess external internet from intranet");
+		retDept.setName("LPMINI2");
+		retDept.setDescription("Develop LPMINI App2");
+		retDept.setDeptHead(2);
 		try {
-			int numRecUpdated = requestDao.saveRequestCategoryArea(retArea);
+			int numRecUpdated = departmentDao.saveDepartment(retDept);
 			assertEquals(numRecUpdated, 1);
-			RequestCategoryArea retAreaUpd = requestDao.findRequestCategoryAreaById(retArea.getId());
-			assertNotNull(retAreaUpd);
-			assertEquals(retAreaUpd.getCategoryName(), "Network Ext");
-			assertEquals(retAreaUpd.getFunctionalAreaName(), "External Internet Access");
+			Department retDeptUpd = departmentDao.findDepartmentById(retDept.getId());
+			assertNotNull(retDeptUpd);
+			assertEquals(retDeptUpd.getName(), "LPMINI2");
+			assertEquals(retDeptUpd.getDescription(), "Develop LPMINI App2");
 		}
 		catch (Exception e) {
 			fail(e.getMessage());
 		}
 		
-		// Delete RequestCategoryArea
+		// Delete Department
 		try {
-			int numRecDeleted = requestDao.deleteRequestCategoryArea(1, retArea.getId());
+			int numRecDeleted = departmentDao.deleteDepartment(1, retDept.getId());
 			assertEquals(numRecDeleted, 1);
 		}
 		catch (Exception e) {
