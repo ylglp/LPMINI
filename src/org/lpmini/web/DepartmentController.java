@@ -95,7 +95,7 @@ public class DepartmentController {
 			BindingResult bindResult,
 			Model model) {
 			
-		final String funcName = "RequestController.addDepartment";
+		final String funcName = "DepartmentController.addDepartment";
 			
 		/*
 		String permissionCheckResult = checkPermission("addDepartment");
@@ -163,8 +163,8 @@ public class DepartmentController {
 	 * 
 	 * @param id: id of the Department
 	 * @param Department: dept
-	 * @param bindResult: holds RequestCategoryArea data validation errors
-	 * @param model: holds the RequestCategoryArea created
+	 * @param bindResult: holds Department data validation errors
+	 * @param model: holds the Department created
 	 * @return Success or error view
 	 */
 	@RequestMapping(value = "editform", method = RequestMethod.POST)
@@ -174,7 +174,7 @@ public class DepartmentController {
 			BindingResult bindResult,
 			Model model) {
 		
-		final String funcName = "RequestController.editDepartmentForm";
+		final String funcName = "DepartmentController.editDepartmentForm";
 		
 		/*
 		String permissionCheckResult = checkPermission("editDepartmentForm");
@@ -219,7 +219,7 @@ public class DepartmentController {
 			BindingResult bindResult,
 			Model model) {
 		
-		final String funcName = "RequestController.editDepartment";
+		final String funcName = "DepartmentController.editDepartment";
 		
 		/*
 		String permissionCheckResult = checkPermission("EditDepartment");
@@ -289,7 +289,7 @@ public class DepartmentController {
 	
 	/**
 	 * Delete a Department 
-	 * @param id: id of the product 
+	 * @param id: id of the Department 
 	 */
 	@RequestMapping(value = "del", method = RequestMethod.POST)
 	public String deleteDepartment(@RequestParam("id") int id) {
@@ -323,6 +323,33 @@ public class DepartmentController {
 			//logger.error("RequestController.delete: " + e.getMessage());
 			return "redirect:listall";
 		}
-	}		
+	}
+
+	/**
+	 * List Department by parent department action
+	 * 
+	 * @param parentId: id of the parent department
+	 * @param model: holds the Department created
+	 * @return Success or error view
+	 */
+	@RequestMapping(value = "listbyparent", method = RequestMethod.POST)
+	public String listDepartmentsbyParentDept(
+			@RequestParam("parentId") int parentId,
+			Model model) {
+		
+		/*
+		String permissionCheckResult = checkPermission("listDepartmentsbyParentDept");
+		if (permissionCheckResult != null)
+			return permissionCheckResult;
+		*/
+		
+		// retrieve Departments owned by this site and have the same parent department
+		int useOwnerAccountId = 1;
+		List<Department> depts = departmentManager.findAllSiteDepartmentsByParentDept(useOwnerAccountId, parentId);
+
+		model.addAttribute("departments", depts);
+		
+		return "department_listbyparent";
+	}
 
 }

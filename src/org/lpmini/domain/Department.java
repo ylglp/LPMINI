@@ -6,10 +6,10 @@ import org.joda.time.DateTime;
 /**
  * Department is a domain object
  * 
- * Creation date: Dec. 7, 2012
- * Last modify date: Dec. 7, 2012
+ * Creation date: Jan. 13, 2013
+ * Last modify date: Jan. 13, 2013
  * 
- * @author  Yan Linda Guo
+ * @author  J Stephen Yu
  * @version 1.0
  */
 

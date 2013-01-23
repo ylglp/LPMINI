@@ -19,9 +19,9 @@ import org.springframework.dao.DuplicateKeyException;
  * CRUD: Create, Read, Update, Delete
  * 
  * Creation date:Jan. 13, 2013
- * Last modify date: Jan. 13, 2013
+ * Last modify date: Jan. 22, 2013
  * 
- * @author  Yan Linda Guo
+ * @author  J Stephen Yu
  * @version 1.0
  */
 public class DepartmentManagerImpl implements DepartmentManager {
@@ -52,6 +52,21 @@ public class DepartmentManagerImpl implements DepartmentManager {
 	// get a specific Department by a given id
 	public Department findDepartmentById(int id) {
 		return departmentDao.findDepartmentById(id);
+	}
+
+	@Override
+	// get a specific Department by a given name
+	public Department findDepartmentByName(int ownerAccountId, String name) {
+		return departmentDao.findDepartmentByName(ownerAccountId, name);
+	}
+
+	@Override
+	// get all Departments owned by a specific account id and have the same parent department
+	public List<Department> findAllSiteDepartmentsByParentDept(int ownerAccountId, int parentDeptId) {
+		List<Department> depts = departmentDao.findDepartmentsByParent(ownerAccountId, parentDeptId);
+		if (depts != null && depts.size() == 0)
+			depts = null;
+		return depts;
 	}
 
 	// Create services

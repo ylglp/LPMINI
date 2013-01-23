@@ -8,10 +8,10 @@ import org.springframework.dao.DuplicateKeyException;
 /**
  * DepartmentDao is the interface for Department related entity's persistence layer
  * 
- * Creation date: Dec. 7, 2012
- * Last modify date: Dec. 7, 2012
+ * Creation date: Jan. 13, 2013
+ * Last modify date: Jan. 22, 2013
  * 
- * @author  Yan Linda Guo
+ * @author  J Stephen Yu
  * @version 1.0
  */
 
@@ -31,7 +31,7 @@ public interface DepartmentDao {
 	public Department findDepartmentByName(int ownerAccountId, String name);
 
 	// get all Department owned by the same parent department
-	public List<Department> findDepartmentsByParent(int parentDeptId);
+	public List<Department> findDepartmentsByParent(int ownerAccountId, int parentDeptId);
 	
 	// Add a Department. Return the generated id
 	public int addDepartment(Department dept) 

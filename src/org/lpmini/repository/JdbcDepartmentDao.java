@@ -17,10 +17,10 @@ import org.springframework.stereotype.Repository;
 /**
  * JdbcDepartmentDao is the JDBC implementation of the DepartmentDao for Department related entity's persistence layer
  * 
- * Creation date: Dec. 7, 2012
- * Last modify date: Dec. 7, 2012
+ * Creation date: Jan. 13, 2013
+ * Last modify date: Jan. 22, 2013
  * 
- * @author  Yan Linda Guo
+ * @author  J Stephen Yu
  * @version 1.0
  */
 
@@ -113,7 +113,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
 			sbQuery.append("select ");
 			sbQuery.append(fieldSelectionForReadDepartment);
 			sbQuery.append(" from Department as o");
-			sbQuery.append(" WHERE o.OwnerAccountId = :OwnerAccountId and o.Name = :Name;");
+			sbQuery.append(" WHERE o.OwnerAccountId = :OwnerAccountId and o.Name = :Name order by o.Id;");
 
 			Department dept = namedParameterJdbcTemplate.queryForObject(
 					sbQuery.toString(),
@@ -123,22 +123,22 @@ public class JdbcDepartmentDao implements DepartmentDao {
 			return dept;
 		} 
 		catch (Exception e) {
-			System.out.println("JdbcDepartmentDao.findDepartmentById Exception: " + e.getMessage());
+			System.out.println("JdbcDepartmentDao.findDepartmentByName Exception: " + e.getMessage());
 			return null;
 		}
 	}
 	
 	// get all Departments owned by a parent Department
 	@Override
-	public List<Department> findDepartmentsByParent(int parentDeptId) {
+	public List<Department> findDepartmentsByParent(int ownerAccountId, int parentDeptId) {
 
 		try {
 			String strQuery = "select " + fieldSelectionForReadDepartment + 
-					" from Department as o where o.ParentDeptId = :ParentDeptId " + 
-					" order by o.Name";
+					" from Department as o where o.OwnerAccountId = :OwnerAccountId and o.ParentDeptId = :ParentDeptId " + 
+					" order by o.Id";
 			List<Department> depts = namedParameterJdbcTemplate.query(
 					strQuery,
-					new MapSqlParameterSource().addValue("ParentDeptId", parentDeptId),
+					new MapSqlParameterSource().addValue("OwnerAccountId", ownerAccountId).addValue("ParentDeptId", parentDeptId),
 					new DepartmentMapper());
 			return depts;
 		}

@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	LPMINI - List All Departments<BR><BR>
+	LPMINI - List All Departments Having the Same Parent Department<BR><BR>
 	
 	<c:choose>
 		<c:when test="${empty departments}">
