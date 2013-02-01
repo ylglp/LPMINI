@@ -47,11 +47,13 @@ CREATE TABLE Department (
 ------------------------------------------------------------------------------
 -- Load Account
 INSERT INTO Account(UniqueId, Name)
-	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D10', 'Allen Company');
+	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D10', 'LogixPath LLP');
 INSERT INTO Account(UniqueId, Name)
-	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D11', 'Bobby Company');
+	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D11', 'Allen Company');
 INSERT INTO Account(UniqueId, Name)
-	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D12', 'Cindy Company');
+	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D12', 'Bobby Company');
+INSERT INTO Account(UniqueId, Name)
+	VALUES('07771AE4-236A-49d3-A49E-B1F9E1934D13', 'Cindy Company');
 
 -- Load Contact
 INSERT INTO Contact(UniqueId, FirstName, LastName, Email)
